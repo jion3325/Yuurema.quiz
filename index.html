@@ -135,13 +135,28 @@ function startTimer() {
 }
 
 function showQuestion() {
-  if (index >= 30) return endGame();
+  function endGame() {
+  document.getElementById("quizBox").style.display = "none";
+  document.getElementById("endScreen").style.display = "block";
 
-  document.getElementById("question").textContent = shuffled[index].q;
-  document.getElementById("userAnswer").value = "";
-  document.getElementById("result").textContent = "";
+  let rank = "";
 
-  startTimer();
+  if (score === 30) {
+    rank = "神です👑";
+  } else if (score >= 25) {
+    rank = "最強クラス🔥";
+  } else if (score >= 20) {
+    rank = "上級者です！";
+  } else if (score >= 15) {
+    rank = "中級者です";
+  } else if (score >= 10) {
+    rank = "初心者卒業！";
+  } else {
+    rank = "がんばろう！";
+  }
+
+  document.getElementById("finalScore").textContent =
+    score + "問解きました！ " + rank;
 }
 
 function checkAnswer() {
