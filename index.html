@@ -75,36 +75,36 @@ button {
 
 <script>
 const quiz = [
-{ q: "大化の改新が始まった年は？", a: ["645","645年"] },
-{ q: "大宝律令が制定された年は？", a: ["701","701年"] },
-{ q: "平安京に遷都した年は？", a: ["794","794年"] },
-{ q: "鎌倉幕府を開いた人物は？", a: ["源頼朝"] },
-{ q: "御成敗式目を制定した人物は？", a: ["北条泰時"] },
-{ q: "承久の乱で敗れたのは？", a: ["後鳥羽上皇"] },
-{ q: "元寇で攻めてきた国は？", a: ["元","モンゴル"] },
-{ q: "室町幕府を開いた人物は？", a: ["足利尊氏"] },
-{ q: "応仁の乱が始まった年は？", a: ["1467","1467年"] },
-{ q: "織田信長が倒れた事件は？", a: ["本能寺の変"] },
-{ q: "刀狩を行った人物は？", a: ["豊臣秀吉"] },
-{ q: "関ヶ原の戦いの年は？", a: ["1600","1600年"] },
-{ q: "江戸幕府を開いた年は？", a: ["1603","1603年"] },
-{ q: "参勤交代を制度化した将軍は？", a: ["徳川家光"] },
-{ q: "享保の改革を行った人物は？", a: ["徳川吉宗"] },
-{ q: "寛政の改革を行った人物は？", a: ["松平定信"] },
-{ q: "ペリー来航の年は？", a: ["1853","1853年"] },
-{ q: "明治維新が始まった年は？", a: ["1868","1868年"] },
-{ q: "廃藩置県が行われた年は？", a: ["1871","1871年"] },
-{ q: "西南戦争の指導者は？", a: ["西郷隆盛"] },
-{ q: "大日本帝国憲法が発布された年は？", a: ["1889","1889年"] },
-{ q: "日露戦争が始まった年は？", a: ["1904","1904年"] },
-{ q: "第一次世界大戦が始まった年は？", a: ["1914","1914年"] },
-{ q: "第二次世界大戦が終わった年は？", a: ["1945","1945年"] },
-{ q: "日本国憲法が施行された年は？", a: ["1947","1947年"] },
-{ q: "墾田永年私財法が出された年は？", a: ["743","743年"] },
-{ q: "院政を始めた天皇は？", a: ["白河天皇"] },
-{ q: "建武の新政を行った天皇は？", a: ["後醍醐天皇"] },
-{ q: "関東大震災が発生した年は？", a: ["1923","1923年"] },
-{ q: "普通選挙法が成立した年は？", a: ["1925","1925年"] }
+  { q: "大化の改新が始まった年は？", a: ["645","645年"] },
+  { q: "大宝律令が制定された年は？", a: ["701","701年"] },
+  { q: "平安京に遷都した年は？", a: ["794","794年"] },
+  { q: "鎌倉幕府を開いた人物は？", a: ["源頼朝"] },
+  { q: "御成敗式目を制定した人物は？", a: ["北条泰時"] },
+  { q: "承久の乱で敗れたのは？", a: ["後鳥羽上皇"] },
+  { q: "元寇で攻めてきた国は？", a: ["元","モンゴル"] },
+  { q: "室町幕府を開いた人物は？", a: ["足利尊氏"] },
+  { q: "応仁の乱が始まった年は？", a: ["1467","1467年"] },
+  { q: "織田信長が倒れた事件は？", a: ["本能寺の変"] },
+  { q: "刀狩を行った人物は？", a: ["豊臣秀吉"] },
+  { q: "関ヶ原の戦いの年は？", a: ["1600","1600年"] },
+  { q: "江戸幕府を開いた年は？", a: ["1603","1603年"] },
+  { q: "参勤交代を制度化した将軍は？", a: ["徳川家光"] },
+  { q: "享保の改革を行った人物は？", a: ["徳川吉宗"] },
+  { q: "寛政の改革を行った人物は？", a: ["松平定信"] },
+  { q: "ペリー来航の年は？", a: ["1853","1853年"] },
+  { q: "明治維新が始まった年は？", a: ["1868","1868年"] },
+  { q: "廃藩置県が行われた年は？", a: ["1871","1871年"] },
+  { q: "西南戦争の指導者は？", a: ["西郷隆盛"] },
+  { q: "大日本帝国憲法が発布された年は？", a: ["1889","1889年"] },
+  { q: "日露戦争が始まった年は？", a: ["1904","1904年"] },
+  { q: "第一次世界大戦が始まった年は？", a: ["1914","1914年"] },
+  { q: "第二次世界大戦が終わった年は？", a: ["1945","1945年"] },
+  { q: "日本国憲法が施行された年は？", a: ["1947","1947年"] },
+  { q: "墾田永年私財法が出された年は？", a: ["743","743年"] },
+  { q: "院政を始めた天皇は？", a: ["白河天皇"] },
+  { q: "建武の新政を行った天皇は？", a: ["後醍醐天皇"] },
+  { q: "関東大震災が発生した年は？", a: ["1923","1923年"] },
+  { q: "普通選挙法が成立した年は？", a: ["1925","1925年"] }
 ];
 
 // シャッフル
@@ -120,6 +120,7 @@ function normalize(text) {
 }
 
 function startTimer() {
+  clearInterval(timer); // 重複防止
   time = 30;
   document.getElementById("timer").textContent = "残り" + time + "秒";
 
@@ -135,28 +136,17 @@ function startTimer() {
 }
 
 function showQuestion() {
-  function endGame() {
-  document.getElementById("quizBox").style.display = "none";
-  document.getElementById("endScreen").style.display = "block";
-
-  let rank = "";
-
-  if (score === 30) {
-    rank = "神です👑";
-  } else if (score >= 25) {
-    rank = "最強クラス🔥";
-  } else if (score >= 20) {
-    rank = "上級者です！";
-  } else if (score >= 15) {
-    rank = "中級者です";
-  } else if (score >= 10) {
-    rank = "初心者卒業！";
-  } else {
-    rank = "がんばろう！";
+  if (index >= shuffled.length) {
+    endGame();
+    return;
   }
 
-  document.getElementById("finalScore").textContent =
-    score + "問解きました！ " + rank;
+  document.getElementById("result").innerHTML = "";
+  document.getElementById("userAnswer").value = "";
+  document.getElementById("question").textContent = shuffled[index].q;
+  document.getElementById("userAnswer").focus();
+  
+  startTimer();
 }
 
 function checkAnswer() {
@@ -165,7 +155,8 @@ function checkAnswer() {
   const user = normalize(document.getElementById("userAnswer").value);
   const answers = shuffled[index].a;
 
-  const correct = answers.some(a => normalize(a) === user);
+  // 全くの空欄は不正解扱い
+  const correct = user !== "" && answers.some(a => normalize(a) === user);
 
   if (correct) {
     score++;
@@ -184,7 +175,7 @@ function checkAnswer() {
 
 function timeUp() {
   document.getElementById("result").innerHTML =
-    "<span class='wrong'>時間切れ！</span>";
+    "<span class='wrong'>時間切れ！ 正解は「" + shuffled[index].a[0] + "」</span>";
 
   index++;
   updateScore();
@@ -199,8 +190,17 @@ function updateScore() {
 function endGame() {
   document.getElementById("quizBox").style.display = "none";
   document.getElementById("endScreen").style.display = "block";
+
+  let rank = "";
+  if (score === 30) rank = "神です👑";
+  else if (score >= 25) rank = "最強クラス🔥";
+  else if (score >= 20) rank = "上級者です！";
+  else if (score >= 15) rank = "中級者です";
+  else if (score >= 10) rank = "初心者卒業！";
+  else rank = "がんばろう！";
+
   document.getElementById("finalScore").textContent =
-    "結果：" + score + " / 30";
+    score + "問解きました！ " + rank;
 }
 
 // Enterキー対応
@@ -211,6 +211,4 @@ document.getElementById("userAnswer").addEventListener("keypress", function(e) {
 // スタート
 showQuestion();
 </script>
-
-</body>
 </html>
